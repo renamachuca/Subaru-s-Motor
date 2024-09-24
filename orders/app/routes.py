@@ -11,7 +11,7 @@ def home():
         db.session.query(Product).first()
         return jsonify({'message': 'conectado a la data base'})
     except Exception as e:
-        return jsonify({'error': str(e)})
+        return jsonify({'error': str})
 
 
 @products_bp.route('/products', methods=['GET'])
@@ -25,9 +25,9 @@ def create_product():
     data = request.get_json()
     new_product = Product(
         name=data['name'],
-        description=data.get('description')
+        description=data.get('description'),
         price=data['price'],
-        stock=data['stock'],
+        stock=data['stock']
     )
     db.session.add(new_product)
     db.session.commit()
