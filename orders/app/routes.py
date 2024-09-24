@@ -25,7 +25,7 @@ def create_product():
     data = request.get_json()
     new_product = Product(
         name=data['name'],
-        description=data.get('description'),
+        description=data.get('description')
         price=data['price'],
         stock=data['stock']
     )
