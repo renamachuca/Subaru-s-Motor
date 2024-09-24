@@ -4,6 +4,16 @@ from . import db
 
 products_bp = Blueprint('products', __name__)
 
+
+@products_bp.route('/home')
+def home():
+    try:
+        db.session.query(Product).first()
+        return jsonify({'message': 'conectado a la data base'})
+    except Exception as e:
+        return jsonify({'error': str(e)})
+
+
 @products_bp.route('/products', methods=['GET'])
 def get_products():
     products = Product.query.all()

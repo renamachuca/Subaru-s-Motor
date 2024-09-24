@@ -1,0 +1,17 @@
+# Ignorar entornos virtuales
+env/
+venv/
+orders/venv/
+
+# Ignorar archivos de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ignorar archivos de configuración del sistema
+.DS_Store
+*.log
+
+# Ignorar archivos de entorno
+.env
