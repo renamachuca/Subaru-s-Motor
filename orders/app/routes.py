@@ -27,7 +27,7 @@ def create_product():
         name=data['name'],
         description=data.get('description')
         price=data['price'],
-        stock=data['stock']
+        stock=data['stock'],
     )
     db.session.add(new_product)
     db.session.commit()
