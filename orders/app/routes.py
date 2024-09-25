@@ -1,34 +1,23 @@
 from flask import Blueprint, jsonify, request
-from .models import Product
+from .models import Order
 from . import db
 
-products_bp = Blueprint('products', __name__)
+orders_bp = Blueprint('orders', __name__)
 
+@orders_bp.route('/orders', methods=['GET'])
+def get_orders():
+    orders = Order.query.all()
+    orders_list = [{"id": o.id, "product_id": o.product_id, "quantity": o.quantity, "total_price": o.total_price} for o in orders]
+    return jsonify(orders_list)
 
-@products_bp.route('/home')
-def home():
-    try:
-        db.session.query(Product).first()
-        return jsonify({'message': 'conectado a la data base'})
-    except Exception as e:
-        return jsonify({'error': str})
-
-
-@products_bp.route('/products', methods=['GET'])
-def get_products():
-    products = Product.query.all()
-    products_list = [{"id": p.id, "name": p.name, "description": p.description, "price": p.price, "stock": p.stock} for p in products]
-    return jsonify(products_list)
-
-@products_bp.route('/products', methods=['POST'])
-def create_product():
+@orders_bp.route('/orders', methods=['POST'])
+def create_order():
     data = request.get_json()
-    new_product = Product(
-        name=data['name'],
-        description=data.get('description'),
-        price=data['price'],
-        stock=data['stock']
+    new_order = Order(
+        product_id=data['product_id'],
+        quantity=data['quantity'],
+        total_price=data['total_price']
     )
-    db.session.add(new_product)
+    db.session.add(new_order)
     db.session.commit()
-    return jsonify({"message": "Product created successfully"}), 201
+    return jsonify({"message": "Order created successfully"}), 201
