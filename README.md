@@ -44,3 +44,29 @@ Para configurar el proyecto:
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/renamachuca/Subaru-s-Motor.git
+
+
+
+   Navega a la carpeta del proyecto:
+
+bash
+Copy code
+cd 'subaru's motor'
+Crea un entorno virtual e instala las dependencias:
+
+bash
+Copy code
+python3 -m venv env
+source env/bin/activate
+pip install -r requirements.txt
+Configura las variables de entorno para la base de datos y Flask:
+
+bash
+Copy code
+export FLASK_APP=wsgi.py
+export FLASK_ENV=development
+Ejecuta la aplicación:
+
+bash
+Copy code
+flask run
