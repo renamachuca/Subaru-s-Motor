@@ -2,6 +2,8 @@
 Subaru's Motor
 Subaru's Motor es un proyecto que utiliza una arquitectura de microservicios para gestionar productos y pedidos.
 Estructura del Proyecto
+
+
 Copysubaru's motor/
 ├── products/
 │   ├── app/
@@ -18,6 +20,13 @@ Copysubaru's motor/
 │   ├── Dockerfile
 │   ├── requirements.txt
 ├── docker-compose.yml
+
+
+
+
+
+
+
 Descripción de los Componentes
 Servicio de Productos
 
